@@ -1,0 +1,28 @@
+CREATE PROCEDURE dbo.ProcResult
+
+@json NVARCHAR(max)
+
+AS
+BEGIN
+
+INSERT INTO dbo.Result(Id, SportTypeId, Name, EventCode, EventDate, Status, ExtId, EventType,Node, IsLiveEvent, IsParlay, IsBetpalEvent, IsVirtual)
+
+SELECT
+Id, SportTypeId, Name, EventCode, EventDate, Status, ExtId, EventType,Node, IsLiveEvent, IsParlay, IsBetpalEvent, IsVirtual
+FROM OPENJSON(@json)
+WITH (Id bigint '$.Id',
+SportTypeId int '$.SportTypeId',
+Name varchar '$.Name',
+EventCode int '$.EventCode',
+EventDate datetime '$.EventDate',
+Status int '$.Status',
+ExtId varchar '$.ExtId',
+EventType varchar '$.EventType',
+Node varchar '$.Node',
+IsLiveEvent bit '$.IsLiveEvent',
+IsParlay bit '$.IsParlay',
+IsBetpalEvent bit '$.IsBetpalEvent',
+IsVirtual bit '$.IsVirtual'
+) AS jsonValues
+
+END
