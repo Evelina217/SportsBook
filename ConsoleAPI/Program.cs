@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Net;
+using Nancy.Json;
 
 namespace ConsoleAPI
 {
@@ -46,39 +47,56 @@ namespace ConsoleAPI
                 if (sLine != null)
                     Console.WriteLine("{0}:{1}", i, sLine);
             }
-            /* string jsonString;
-             {
-                 StreamReader reader = new StreamReader(objStream, System.Text.Encoding.UTF8);
-                 jsonString = reader.ReadToEnd();
-             }*/
+            
             Console.ReadLine();
 
-            Result Results = JsonConvert.DeserializeObject<Result>(sLine);
-            string sprocname = "ProcResult";
-            string paramName = "@json";
-            // Sample JSON string 
-            string paramValue = sLine;
 
-            using (SqlCommand cmd = new SqlCommand(sprocname, conn))
+        
+            var serializer = new JavaScriptSerializer();
+            Result results = serializer.Deserialize<Result>(sLine);
+
+            foreach (var item in results)
             {
-                // Set command object as a stored procedure
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                // Add parameter that will be passed to stored procedure
-                cmd.Parameters.Add(new SqlParameter(paramName, paramValue));
-
-                cmd.ExecuteReader();
+               
+                if (SaveToDatabase(conn, item))
+                {
+                    Console.WriteLine("Success : " + item.Description + " Saved into database");
+                }
+                else
+                {
+                    Console.WriteLine("Error : " + item.Description + " unable to Saved into database");
+                }
             }
+            static bool SaveToDatabase(SqlConnection conn, Result results)
+            {
+               
+                    string insertQuery = @"Insert into Result(Id, SportTypeId, Name, EventCode, EventDate, Status, ExtId, EventType,Node, IsLiveEvent, IsParlay, IsBetpalEvent, IsVirtual)";
+                    using (SqlCommand cmd = new SqlCommand(insertQuery, conn))
+                    {
+                        cmd.Parameters.Add(new SqlParameter("@Id", results.Id));
+                        cmd.Parameters.Add(new SqlParameter("@SportTypeId", results.SportTypeId));
+                        cmd.Parameters.Add(new SqlParameter("@Name", results.Name));
+                        cmd.Parameters.Add(new SqlParameter("@EventCode", results.EventCode));
+                        cmd.Parameters.Add(new SqlParameter("@EventDate", results.EventDate));
+                        cmd.Parameters.Add(new SqlParameter("@Status", results.Status));
+                        cmd.Parameters.Add(new SqlParameter("@ExtId", results.ExtId));
+                        cmd.Parameters.Add(new SqlParameter("@EventType", results.EventType));
+                        cmd.Parameters.Add(new SqlParameter("@Node", results.Node));
 
-            
+                        cmd.Parameters.Add(new SqlParameter("@IsLiveEvent", results.IsLiveEvent));
+                        cmd.Parameters.Add(new SqlParameter("@IsParlay", results.IsParlay));
+                        cmd.Parameters.Add(new SqlParameter("@IsBetpalEvent", results.IsBetpalEvent));
+                        cmd.Parameters.Add(new SqlParameter("@IsVirtual", results.IsVirtual));
 
-           
+                        cmd.ExecuteNonQuery();
+                    }
+                    return true;
 
+                }
 
-
-
-
+                }
         }
+    
     }
-}
+
 
