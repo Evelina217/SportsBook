@@ -1,0 +1,16 @@
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.exe
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.deps.json
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.runtimeconfig.json
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.runtimeconfig.dev.json
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.dll
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ref\ConsoleAPI.dll
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\bin\Debug\net5.0\ConsoleAPI.pdb
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.csproj.AssemblyReference.cache
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.AssemblyInfoInputs.cache
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.AssemblyInfo.cs
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.csproj.CoreCompileInputs.cache
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.dll
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ref\ConsoleAPI.dll
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.pdb
+C:\Users\Эвелина\source\repos\ConsoleAPI\ConsoleAPI\obj\Debug\net5.0\ConsoleAPI.genruntimeconfig.cache
